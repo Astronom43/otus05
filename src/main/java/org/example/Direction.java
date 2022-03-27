@@ -1,10 +1,19 @@
 package org.example;
 
+/**
+ * Класс для хранения информации о направлении, скорости вращения и реализации расчета следующего направления
+ */
 public class Direction {
     public static final int DIRECTION_NUMBER = 360;
     private final int angle;
     private final int angularVelocity;
 
+    /**
+     * Публичный конструктор
+     *
+     * @param angle           текущий угол поворота в градусах
+     * @param angularVelocity скорость вращения в градусах / 1 действие
+     */
     public Direction(int angle, int angularVelocity) {
         if (angle >= 0 && angle < 360) {
             this.angle = angle;
@@ -20,19 +29,6 @@ public class Direction {
 
     public int getAngularVelocity() {
         return angularVelocity;
-    }
-
-    public static Direction next(int angle, int angularVelocity) {
-        return new Direction(calculateAngle(angle, angularVelocity), angularVelocity);
-    }
-
-    public Direction next() {
-        return Direction.next(this.getAngle(), this.getAngularVelocity());
-    }
-
-    private static int calculateAngle(int angle, int angularVelocity) {
-        final int i = (angle + angularVelocity) % DIRECTION_NUMBER;
-        return i >= 0 ? i : DIRECTION_NUMBER + i;
     }
 
     @Override

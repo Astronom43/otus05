@@ -2,15 +2,31 @@ package org.example;
 
 import java.util.Optional;
 
+/**
+ * Класс для хранения информации о текущем расположении
+ */
 public class Vector {
     private final int x;
     private final int y;
 
+    /**
+     * Публичный конструктор
+     *
+     * @param x координата X
+     * @param y координата Y
+     */
     public Vector(int x, int y) {
         this.x = x;
         this.y = y;
     }
 
+    /**
+     * Метод  сложения двух объектов
+     *
+     * @param a первое слагаемой
+     * @param b второе слакаемой
+     * @return сумма
+     */
     public static Vector add(Vector a, Vector b) {
         final var errorMessage = "Аргумент не может равняться null";
         return new Vector(Optional.ofNullable(a).orElseThrow(() -> new IllegalArgumentException(errorMessage)).getX() + Optional.ofNullable(b).orElseThrow(() -> new IllegalArgumentException(errorMessage)).getX(),
